@@ -4,6 +4,11 @@ import { logErrorInDevelopment } from "@/utils/devlopment";
 import { RequestWithUser, UserSchema } from "@/types/user";
 import User from "@/models/UserModel";
 
+const COOKIE_OPTIONS = {
+  httpOnly: true,
+  maxAge: 24 * 60 * 60 * 1000, // 1 day
+};
+
 export async function register(req: Request, res: Response) {
   const { name, email, username, password } = req.body;
 
@@ -46,6 +51,8 @@ export async function register(req: Request, res: Response) {
         },
       });
     }
+
+    res.cookie("token", token, COOKIE_OPTIONS);
 
     return res.status(201).json({
       user: {
@@ -106,6 +113,8 @@ export async function login(req: Request, res: Response) {
         },
       });
     }
+
+    res.cookie("token", token, COOKIE_OPTIONS);
 
     return res.status(200).json({
       user: {
