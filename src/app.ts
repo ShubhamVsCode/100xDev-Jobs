@@ -1,3 +1,5 @@
+import "module-alias/register";
+
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -33,7 +35,7 @@ app.use(
       };
     }
 
-    res.status(err.statusCode || 500).json(json);
+    return res.status(err.statusCode || 500).json(json);
   }
 );
 

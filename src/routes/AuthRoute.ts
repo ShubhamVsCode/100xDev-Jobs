@@ -1,9 +1,11 @@
 import { Router } from "express";
+import { isLoggedIn } from "../middlewares/AuthMiddleware";
+import { login, me, register } from "../controllers/AuthController";
 
 const authRouter = Router();
 
-authRouter.get("/me", (req, res) => {});
-authRouter.post("/register", (req, res) => {});
-authRouter.post("/login", (req, res) => {});
+authRouter.get("/me", isLoggedIn, me);
+authRouter.post("/register", register);
+authRouter.post("/login", login);
 
 export default authRouter;

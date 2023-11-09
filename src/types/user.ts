@@ -1,6 +1,8 @@
+import { Request } from "express";
 import { z } from "zod";
 
 export const UserSchema = z.object({
+  _id: z.string().optional(),
   name: z.string(),
   username: z
     .string()
@@ -12,3 +14,7 @@ export const UserSchema = z.object({
 });
 
 export type UserType = z.infer<typeof UserSchema>;
+
+export interface RequestWithUser extends Request {
+  user?: UserType;
+}
