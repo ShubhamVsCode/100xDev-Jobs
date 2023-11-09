@@ -32,7 +32,13 @@
     "typescript": "^5.2.2"
   },
   "_moduleAliases": {
+    "@/": "dist",
     "@/models": "dist/models",
-    "@/controllers": "dist/controllers"
+    "@/controllers": "dist/controllers",
+    "@/middlewares": "dist/middlewares",
+    "@/utils": "dist/utils",
+    "@/types": "dist/types",
+    "@/routes": "dist/routes",
+    "@/config": "dist/config"
   }
 }

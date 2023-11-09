@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { comparePassword, createJWT, hashPassword } from "../utils/common";
-import { logErrorInDevelopment } from "../utils/devlopment";
-import { RequestWithUser, UserSchema } from "../types/user";
+import { comparePassword, createJWT, hashPassword } from "@/utils/common";
+import { logErrorInDevelopment } from "@/utils/devlopment";
+import { RequestWithUser, UserSchema } from "@/types/user";
 import User from "@/models/UserModel";
 
 export async function register(req: Request, res: Response) {

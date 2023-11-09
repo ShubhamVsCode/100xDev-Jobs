@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { UserType } from "../types/user";
+import { UserType } from "@/types/user";
 import jwt from "jsonwebtoken";
 
 /**

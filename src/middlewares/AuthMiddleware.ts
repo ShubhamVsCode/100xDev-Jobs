@@ -1,7 +1,7 @@
 import { NextFunction, Response } from "express";
-import { decodeJWT } from "../utils/common";
-import { RequestWithUser, UserType } from "../types/user";
-import User from "../models/UserModel";
+import { decodeJWT } from "@/utils/common";
+import { RequestWithUser, UserType } from "@/types/user";
+import User from "@/models/UserModel";
 
 export async function isLoggedIn(
   req: RequestWithUser,

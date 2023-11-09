@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
 
+/**
+ * Connects to the MongoDB database using the MONGO_URI environment variable.
+ *
+ * @return {Promise<void>} Throws an error if MONGO_URI is not set in the .env file.
+ */
 const connectDB = async () => {
   const MONGO_URI = process.env.MONGO_URI as string;
   if (!MONGO_URI) {

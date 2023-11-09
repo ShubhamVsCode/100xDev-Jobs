@@ -3,11 +3,11 @@ import "module-alias/register";
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import CustomError from "./config/ErrorClass";
+import CustomError from "@/config/ErrorClass";
 dotenv.config();
 
-import authRouter from "./routes/AuthRoute";
-import connectDB from "./config/db/dbConnect";
+import authRouter from "@/routes/AuthRoute";
+import connectDB from "@/config/db/dbConnect";
 
 const app = express();
 
