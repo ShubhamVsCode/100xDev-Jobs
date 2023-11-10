@@ -4,14 +4,17 @@ import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+
 import CustomError from "@/config/ErrorClass";
-dotenv.config();
+import connectDB from "@/config/db/dbConnect";
 
 import authRouter from "@/routes/AuthRoute";
-import connectDB from "@/config/db/dbConnect";
+import profileRouter from "@/routes/ProfileRoute";
+import { isLoggedIn } from "./middlewares/AuthMiddleware";
 
 const app = express();
 
+dotenv.config();
 const PORT = process.env.PORT;
 app.use(express.json());
 app.use(cors());
@@ -24,6 +27,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/api/auth", authRouter);
+app.use("/api/profile", isLoggedIn, profileRouter);
 
 app.use(
   (err: CustomError, _req: Request, res: Response, next: NextFunction) => {

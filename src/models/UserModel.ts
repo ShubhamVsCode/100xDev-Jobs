@@ -20,9 +20,9 @@ const userSchema = new Schema<UserType & Document>({
     type: String,
     required: true,
   },
-  profilePicture: {
-    type: String,
-    default: "",
+  profile: {
+    type: Schema.Types.ObjectId,
+    ref: "Profile",
   },
 });
 
