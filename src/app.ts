@@ -4,6 +4,7 @@ import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import morgan from "morgan";
 
 import CustomError from "@/config/ErrorClass";
 import connectDB from "@/config/db/dbConnect";
@@ -17,8 +18,14 @@ const app = express();
 dotenv.config();
 const PORT = process.env.PORT;
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 app.use(cookieParser());
+app.use(morgan("dev"));
 
 app.get("/health", (req, res) => {
   res.json({
