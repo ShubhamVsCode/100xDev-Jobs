@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/app.js",
     "dev": "tsc-watch --onSuccess \"node -r tsconfig-paths/register dist/app.js\"",
-    "build": "tsc && tsconfig-paths compile"
+    "build": "tsc && npx tsconfig-paths compile"
   },
   "keywords": [],
   "author": "",
