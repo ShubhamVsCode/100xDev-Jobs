@@ -1,11 +1,6 @@
 import { ProfileType } from "@/types/user";
 import mongoose, { Document } from "mongoose";
-
-const skillsSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  slug: { type: String, required: true },
-  level: { type: Number, default: 1 },
-});
+import Skills from "./SkillsModel";
 
 const projectSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -29,7 +24,8 @@ const profileSchema = new mongoose.Schema<ProfileType & Document>({
     youtube: String,
   },
   skills: {
-    type: [skillsSchema],
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "Skill",
   },
   projects: {
     type: [projectSchema],

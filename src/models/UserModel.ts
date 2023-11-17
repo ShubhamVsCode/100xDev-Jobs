@@ -20,6 +20,10 @@ const userSchema = new Schema<UserType & Document>({
     type: String,
     required: true,
   },
+  verified: {
+    type: Boolean,
+    default: false,
+  },
   profile: {
     type: Schema.Types.ObjectId,
     ref: "Profile",

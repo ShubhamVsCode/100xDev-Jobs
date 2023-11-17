@@ -1,11 +1,20 @@
 import { Router } from "express";
-import { login, me, register } from "@/controllers/AuthController";
-import { updateProfile } from "@/controllers/ProfileController";
+import {
+  addSkills,
+  createProfile,
+  getAllSkills,
+  getProfile,
+  updateProfile,
+  verifyProfile,
+} from "@/controllers/ProfileController";
 
 const profileRouter = Router();
 
-profileRouter.get("/", me);
-profileRouter.post("/create", updateProfile);
-profileRouter.put("/", updateProfile);
+profileRouter.get("/", getProfile);
+profileRouter.get("/verify", verifyProfile);
+profileRouter.post("/create", createProfile);
+profileRouter.put("/update", updateProfile);
+profileRouter.post("/skills/add", addSkills);
+profileRouter.get("/skills/all", getAllSkills);
 
 export default profileRouter;

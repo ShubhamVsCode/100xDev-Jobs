@@ -11,6 +11,7 @@ export const UserSchema = z.object({
   email: z.string().email("Invalid email format"),
   password: z.string().min(6, "Password must be at least 6 characters"),
   profile: z.string().optional(),
+  verified: z.boolean().optional(),
 });
 
 export type UserType = z.infer<typeof UserSchema>;
@@ -24,6 +25,7 @@ export const SkillSchema = z.object({
   name: z.string(),
   slug: z.string(),
   level: z.number(),
+  picture: z.string(),
 });
 
 // Project
@@ -49,7 +51,7 @@ export const ProfileSchema = z.object({
   _id: z.string().optional(),
   picture: z.string().url("Invalid Profile Picture URL").optional(),
   social: SocialSchema,
-  skills: z.array(SkillSchema).optional(),
+  skills: z.array(z.string()).optional(),
   projects: z.array(ProjectSchema).optional(),
   likes: z.number().optional(),
 });
