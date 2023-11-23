@@ -31,11 +31,14 @@ export const SkillSchema = z.object({
 // Project
 export const ProjectSchema = z.object({
   name: z.string(),
-  link: z.string().url("Invalid Project URL").optional(),
+  githubLink: z.string().url("Invalid Github URL"),
+  deployedLink: z.string().url("Invalid Deployed URL").optional(),
   description: z.string(),
   images: z.array(z.string()).optional(),
   videoLink: z.string().optional(),
+  tags: z.array(z.string()),
 });
+export type ProjectType = z.infer<typeof ProjectSchema>;
 
 // Social
 export const SocialSchema = z.object({

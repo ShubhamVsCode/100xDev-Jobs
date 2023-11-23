@@ -13,6 +13,7 @@ import authRouter from "@/routes/AuthRoute";
 import profileRouter from "@/routes/ProfileRoute";
 import { isLoggedIn } from "./middlewares/AuthMiddleware";
 import uploadRouter from "./routes/FileRoute";
+import homeRouter from "./routes/HomePageRoute";
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/api/auth", authRouter);
+app.use("/api/home", homeRouter);
 app.use("/api/profile", isLoggedIn, profileRouter);
 app.use("/api/upload", isLoggedIn, uploadRouter);
 

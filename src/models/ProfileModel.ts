@@ -1,10 +1,11 @@
-import { ProfileType } from "@/types/user";
+import { ProfileType, ProjectType } from "@/types/user";
 import mongoose, { Document } from "mongoose";
 import Skills from "./SkillsModel";
 
-const projectSchema = new mongoose.Schema({
+const projectSchema = new mongoose.Schema<ProjectType & Document>({
   name: { type: String, required: true },
-  link: { type: String },
+  githubLink: { type: String, required: true },
+  deployedLink: { type: String },
   description: { type: String, required: true },
   images: {
     type: [String],
