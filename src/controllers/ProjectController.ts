@@ -69,3 +69,27 @@ export const updateProject = async (req: RequestWithUser, res: Response) => {
     });
   }
 };
+
+export const getAllProjects = async (req: RequestWithUser, res: Response) => {
+  try {
+    const profile = await Profile.findById(req.user?.profile);
+    if (!profile) {
+      return res.status(400).json({
+        error: {
+          message: "Profile not found",
+        },
+      });
+    }
+
+    return res.status(200).json({
+      projects: profile.projects,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      error: {
+        message: "Something went wrong",
+      },
+    });
+  }
+};

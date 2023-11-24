@@ -7,7 +7,7 @@ import {
   updateProfile,
   verifyProfile,
 } from "@/controllers/ProfileController";
-import { addProject } from "@/controllers/ProjectController";
+import { addProject, getAllProjects } from "@/controllers/ProjectController";
 
 const profileRouter = Router();
 
@@ -19,6 +19,7 @@ profileRouter.post("/skills/add", addSkills);
 profileRouter.get("/skills/all", getAllSkills);
 
 // Project Add
+profileRouter.get("/projects", getAllProjects);
 profileRouter.post("/project/add", addProject);
 
 export default profileRouter;
